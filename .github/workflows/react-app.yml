@@ -23,7 +23,7 @@ jobs:
     - uses: actions/checkout@v2
 
     # Runs a single command using the runners shell
-    - name: Install Node.JS
+    - name: Install NodeJS
       uses: actions/setup-node@v2-beta
       with:
         node-version: 12
@@ -36,7 +36,7 @@ jobs:
       run: yarn build
       
     - name: Install Surge
-      run: npm install -g surge
+      run: yarn install --global surge
       
     - name: Deploy to Surge
-      run: surge ./ create_react_app.surge.sh --token ${{secrets.REACT_APP}}
+      run: surge ./build create_react_app.surge.sh --token ${{secrets.REACT_APP}}
